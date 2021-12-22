@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.623);
+}
+
+.error-div {
+  background-color: whitesmoke;
+  width: 50rem;
+  height: 15rem;
+  max-width: 90%;
+  margin: 250px auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.error-head {
+  background-color: rgb(97, 22, 97);
+  height: 4rem;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.error-msg {
+  color: black;
+  padding: 10px;
+  font-size: 1.3rem;
+}
+
+.cancel-div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.cancel-div button {
+  width: 7.5rem;
+  height: 3rem;
+  cursor: pointer;
+  background-color: rgb(97, 22, 97);
+  color: whitesmoke;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 8px;
+}

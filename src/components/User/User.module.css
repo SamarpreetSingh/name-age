@@ -1,0 +1,14 @@
+.user-div {
+  background-color: white;
+  width: 50rem;
+  max-width: 90%;
+  margin: 15px auto;
+  padding: 2px 8px;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.user-div p {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
