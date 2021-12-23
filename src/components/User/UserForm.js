@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import styles from "./UserForm.module.css";
 import Button from "../UI/Button";
 
 const UserForm = (props) => {
-  const [user, setUser] = useState({ username: "", age: "" });
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (user.username.trim().length === 0 || user.age.trim().length === 0) {
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
       props.setError("Please enter a valid name and age (non empty values) ");
-    } else if (!Number.isInteger(+user.age) || +user.age <= 0) {
+    } else if (!Number.isInteger(+enteredAge) || +enteredAge <= 0) {
       props.setError("Please enter a valid age (> 0)");
     } else {
-      props.addUser(user);
-      setUser({ username: "", age: "" });
+      props.addUser({ username: enteredName, age: enteredAge });
     }
+
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
   return (
@@ -22,32 +27,11 @@ const UserForm = (props) => {
       <form onSubmit={submitHandler}>
         <div className={styles["form-control"]}>
           <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={user.username}
-            onChange={(e) => {
-              setUser((prev) => {
-                return {
-                  username: e.target.value,
-                  age: prev.age,
-                };
-              });
-            }}
-          />
+          <input type="text" name="username" ref={nameInputRef} />
         </div>
         <div className={styles["form-control"]}>
           <label>Age (years)</label>
-          <input
-            type="number"
-            name="username"
-            value={user.age}
-            onChange={(e) => {
-              setUser((prev) => {
-                return { username: prev.username, age: e.target.value };
-              });
-            }}
-          />
+          <input type="number" name="username" ref={ageInputRef} />
         </div>
         <div className={styles["form-submit"]}>
           <Button type="submit">Add User</Button>
